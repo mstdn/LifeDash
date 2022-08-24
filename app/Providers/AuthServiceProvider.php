@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Team;
+use App\Policies\NotesPolicy;
+use App\Policies\TaskPolicy;
 use App\Policies\TeamPolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -25,7 +28,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        //
+        Gate::define('delete-note', [NotesPolicy::class, 'destroy']);
+        Gate::define('edit-note', [NotesPolicy::class, 'update']);
+        Gate::define('delete-task', [TaskPolicy::class, 'destroy']);
+        Gate::define('edit-task', [TaskPolicy::class, 'update']);
     }
 }
