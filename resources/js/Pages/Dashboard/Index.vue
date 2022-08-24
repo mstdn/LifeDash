@@ -10,6 +10,8 @@ import AppLayout from '@/Layouts/AppLayout.vue';
             </h2>
         </template>
 
+
+
         <div class="py-2">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <div class="overflow-hidden sm:rounded-lg flex">

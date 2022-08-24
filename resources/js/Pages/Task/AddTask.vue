@@ -100,7 +100,7 @@ const characterCount = computed(() => {
 let form = useForm({
     task: "",
     category: "1",
-    completed: 0
+    completed: false
 });
 
 let submit = () => {

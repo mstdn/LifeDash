@@ -18,6 +18,9 @@ let form = useForm({
 });
 
 let submit = () => {
-    form.patch(route('task.uncompleted', props.task.id));
+    form.patch(route('task.uncompleted', props.task.id), {
+        preserveScroll: true,
+        preserveState: true,
+    });
 }
 </script>

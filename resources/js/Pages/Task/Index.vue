@@ -2,7 +2,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import AddTask from './AddTask.vue';
 import throttle from "lodash/throttle";
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import EditTask from "./EditTask.vue";
 import { useForm } from '@inertiajs/inertia-vue3';
@@ -38,6 +38,14 @@ function destroy(id) {
     }
 };
 
+const completedTask = computed(() => {
+  return props.tasks.data.filter(t => ! t.completed).length
+});
+
+const uncompletedTask = computed(() => {
+  return props.tasks.data.filter(t => t.completed).length
+});
+
 </script>
 <template>
     <div class="min-h-screen">
@@ -48,7 +56,7 @@ function destroy(id) {
                 </h2>
             </template>
 
-            <div class="py-2">
+            <div class="py-6">
                 <div class="max-w-7xl mx-auto px-6 lg:px-8">
                     <div class="overflow-hidden flex">
                         <div class="pb-5 flex justify-between w-full">
@@ -64,7 +72,7 @@ function destroy(id) {
                 </div>
             </div>
 
-            <div class="py-2">
+            <div v-show="completedTask" class="py-2">
                 <div class="max-w-7xl mx-auto px-6 lg:px-8">
                     <div class="overflow-visible flex">
                         <div class="pb-5 flex justify-between w-full">
@@ -74,9 +82,8 @@ function destroy(id) {
                                 <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">In progress</h3>
                                 <ul class="w-full text-sm font-medium text-gray-900 dark:text-white">
 
-                                    <div v-for="task in tasks.data" :key="task.id">
-                                        <li v-if="task.completed === 0"
-                                            class="w-full rounded-lg border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 mb-2">
+                                    <div v-for="task in tasks.data.filter(t => ! t.completed)" :key="task.id">
+                                        <li class="w-full rounded-lg border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 mb-2">
                                             <div class="flex items-center pl-3">
                                                 <MarkCompleted :task="task" />
                                                 <label for="completed"
@@ -112,7 +119,7 @@ function destroy(id) {
             </div>
 
 
-            <div class="py-2">
+            <div v-show="uncompletedTask" class="py-2">
                 <div class="max-w-7xl mx-auto px-6 lg:px-8">
                     <div class="overflow-visible sm:rounded-lg flex">
                         <div class="pb-5 flex justify-between w-full">
@@ -122,8 +129,8 @@ function destroy(id) {
                                 <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">Good job!</h3>
                                 <ul class="w-full text-sm font-medium text-gray-900 dark:text-white">
 
-                                    <div v-for="task in tasks.data" :key="task.id">
-                                        <li v-if="task.completed === 1"
+                                    <div v-for="task in tasks.data.filter(t => t.completed)" :key="task.id">
+                                        <li
                                             class="w-full rounded-lg border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 mb-2">
                                             <div class="flex items-center pl-3">
                                                 <MarkUncompleted :task="task" />

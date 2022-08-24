@@ -41,12 +41,16 @@ class TaskController extends Controller
 
     public function completed(Request $request, Task $task)
     {
+        if (!Gate::allows('edit-task', $task)) {
+            abort(403);
+        }
+        
         $request->validate([
             'completed'     =>  'required|boolean'
         ]);
 
         $task->update([
-            'completed'     =>  1
+            'completed'     =>  true
         ]);
 
         return Redirect::route('tasks');
@@ -54,12 +58,16 @@ class TaskController extends Controller
 
     public function uncompleted(Request $request, Task $task)
     {
+        if (!Gate::allows('edit-task', $task)) {
+            abort(403);
+        }
+
         $request->validate([
             'completed'     =>  'required|boolean'
         ]);
 
         $task->update([
-            'completed'     =>  0
+            'completed'     =>  false
         ]);
 
         return Redirect::route('tasks');
