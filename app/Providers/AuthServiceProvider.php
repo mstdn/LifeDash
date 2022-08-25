@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Team;
+use App\Policies\ContactPolicy;
 use App\Policies\NotesPolicy;
 use App\Policies\TaskPolicy;
 use App\Policies\TeamPolicy;
@@ -32,5 +33,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('edit-note', [NotesPolicy::class, 'update']);
         Gate::define('delete-task', [TaskPolicy::class, 'destroy']);
         Gate::define('edit-task', [TaskPolicy::class, 'update']);
+        Gate::define('delete-contact', [ContactPolicy::class, 'destroy']);
+        Gate::define('edit-contact', [ContactPolicy::class, 'update']);
     }
 }

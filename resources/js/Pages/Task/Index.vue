@@ -39,11 +39,11 @@ function destroy(id) {
 };
 
 const completedTask = computed(() => {
-  return props.tasks.data.filter(t => ! t.completed).length
+    return props.tasks.data.filter(t => !t.completed).length
 });
 
 const uncompletedTask = computed(() => {
-  return props.tasks.data.filter(t => t.completed).length
+    return props.tasks.data.filter(t => t.completed).length
 });
 
 </script>
@@ -62,7 +62,7 @@ const uncompletedTask = computed(() => {
                         <div class="pb-5 flex justify-between w-full">
                             <div class="flex justify-start">
                                 <input type="text" v-model="search" placeholder="Search tasks"
-                                    class="input input-bordered w-full max-w-xs" />
+                                    class="input input-bordered w-full max-w-xs bg-white text-gray-900 dark:bg-gray-800 dark:text-white" />
                             </div>
                             <div class="flex justify-end">
                                 <AddTask />
@@ -82,18 +82,25 @@ const uncompletedTask = computed(() => {
                                 <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">In progress</h3>
                                 <ul class="w-full text-sm font-medium text-gray-900 dark:text-white">
 
-                                    <div v-for="task in tasks.data.filter(t => ! t.completed)" :key="task.id">
-                                        <li class="w-full rounded-lg border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 mb-2">
+                                    <div v-for="task in tasks.data.filter(t => !t.completed)" :key="task.id">
+                                        <li
+                                            class="w-full rounded-lg border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 mb-2">
                                             <div class="flex items-center pl-3">
                                                 <MarkCompleted :task="task" />
-                                                <label for="completed"
+                                                <label
                                                     class="py-3 ml-3 w-full text-sm font-medium text-gray-900 dark:text-gray-300">
                                                     {{ task.task }}
                                                 </label>
                                                 <div class="flex items-end">
                                                     <div class="dropdown dropdown-end px-2">
-                                                        <label tabindex="0"
-                                                            class="btn btn-xs btn-outline btn-primary">Options</label>
+                                                        <label tabindex="0" class="btn btn-ghost">
+                                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
+                                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                                                </path>
+                                                            </svg>
+                                                        </label>
                                                         <ul tabindex="0"
                                                             class="dropdown-content menu p-2 shadow bg-base-100 dark:bg-gray-700 dark:text-white rounded-box w-52">
                                                             <li>
@@ -134,14 +141,20 @@ const uncompletedTask = computed(() => {
                                             class="w-full rounded-lg border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 mb-2">
                                             <div class="flex items-center pl-3">
                                                 <MarkUncompleted :task="task" />
-                                                <label for="completed"
+                                                <label
                                                     class="py-3 ml-3 w-full text-sm font-medium text-gray-900 dark:text-gray-300">
                                                     {{ task.task }}
                                                 </label>
                                                 <div class="flex items-end">
                                                     <div class="dropdown dropdown-end px-2">
-                                                        <label tabindex="0"
-                                                            class="btn btn-xs btn-outline btn-primary">Options</label>
+                                                        <label tabindex="0" class="btn btn-ghost">
+                                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
+                                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                                                </path>
+                                                            </svg>
+                                                        </label>
                                                         <ul tabindex="0"
                                                             class="dropdown-content menu p-2 shadow bg-base-100 dark:bg-gray-700 dark:text-white rounded-box w-52">
                                                             <li>

@@ -27,5 +27,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         Route::patch('/{task}/edit', [TaskController::class, 'update'])->name('task.edit');
         Route::delete('/{task}/delete', [TaskController::class, 'destroy'])->name('task.destroy');
     });
-    Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
+    Route::group(['prefix' => 'contacts'], function () {
+        Route::get('/', [ContactController::class, 'index'])->name('contacts');
+        Route::post('/', [ContactController::class, 'store']);
+        Route::patch('/{contact}/edit', [ContactController::class, 'update'])->name('contact.edit');
+        Route::delete('/{contact}/delete', [ContactController::class, 'destroy'])->name('contact.destroy');
+    });
 });

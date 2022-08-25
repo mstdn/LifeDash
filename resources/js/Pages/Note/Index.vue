@@ -51,8 +51,8 @@ function destroy(id) {
 
                     <div class="flex justify-between">
                         <div class="flex justify-start">
-                            <input v-model="search" type="text" placeholder="Search for notes"
-                                class="input input-bordered w-full max-w-xs focus:ring-0" />
+                            <input v-model="search" type="text" placeholder="Search notes"
+                                class="input input-bordered w-full max-w-xs focus:ring-0 bg-white text-gray-900 dark:bg-gray-800 dark:text-white" />
                         </div>
                         <div class="flex justify-end">
                             <AddNote />
@@ -61,7 +61,7 @@ function destroy(id) {
 
                     <div class="grid grid-flow-row auto-rows-auto">
                         <div v-for="note in notes.data" :key="note.id"
-                            class="card card-compact w-auto bg-gray-100 dark:bg-gray-800 my-2 mt-4 rounded-md overflow-visible">
+                            class="card card-compact w-auto bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 my-2 mt-4 rounded-lg overflow-visible">
 
                             <div class="card-body">
                                 <div class="card-title flex justify-between">
@@ -69,8 +69,25 @@ function destroy(id) {
                                         <button class="btn btn-primary btn-xs">{{ note.category }}</button>
                                     </div>
                                     <div class="flex justify-end">
-                                        <div class="badge badge-accent badge-outline badge-sm">
-                                            {{ note.time }}
+                                        <div class="dropdown dropdown-end">
+                                            <label tabindex="0" class="btn btn-ghost">
+                                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
+                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                                    </path>
+                                                </svg>
+                                            </label>
+                                            <ul tabindex="0"
+                                                class="dropdown-content menu p-2 shadow bg-base-100 dark:bg-gray-700 dark:text-white rounded-box w-52 text-sm">
+                                                <li>
+                                                    <EditNote :note="note" />
+                                                </li>
+                                                <li>
+                                                    <button @click="destroy(note.id)" method="post" type="submit"
+                                                        class="btn-link">Delete</button>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -80,20 +97,10 @@ function destroy(id) {
 
                                     </div>
                                     <div>
-
-                                        <div class="dropdown dropdown-end">
-                                            <label tabindex="0" class="btn btn-sm btn-outline btn-primary">Options</label>
-                                            <ul tabindex="0"
-                                                class="dropdown-content menu p-2 shadow bg-base-100 dark:bg-gray-700 dark:text-white rounded-box w-52">
-                                                <li>
-                                                    <EditNote class="m-2" :note="note" />
-                                                </li>
-                                                <li>
-                                                    <button @click="destroy(note.id)" method="post" type="submit"
-                                                        class="btn-link">Delete</button>
-                                                </li>
-                                            </ul>
+                                        <div class="badge badge-accent badge-outline badge-sm">
+                                            {{ note.time }}
                                         </div>
+
 
                                     </div>
                                 </div>

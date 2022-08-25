@@ -56,6 +56,8 @@ class HandleInertiaRequests extends Middleware
                                         'name'  =>  $category->name,
                                         'slug'  =>  $category->slug
                                     ]),
+
+            'filters' => $request->only(['search']),
         ]);
     }
 }
