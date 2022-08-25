@@ -19,8 +19,7 @@ defineProps({
                     <h2 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span
                             class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Your
                             Data<br /></span> Your Control.</h2>
-                    <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Write a super duper mega
-                        awesome text for this thing still.</p>
+                    <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">A place for everything and everything in it's place.</p>
                     <InertiaLink href="/register" class="btn btn-ghost text-white">
                         Get started
                         <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
