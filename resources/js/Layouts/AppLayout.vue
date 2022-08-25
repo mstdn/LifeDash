@@ -8,6 +8,7 @@ import JetDropdown from '@/Components/Dropdown.vue';
 import JetDropdownLink from '@/Components/DropdownLink.vue';
 import JetNavLink from '@/Components/NavLink.vue';
 import JetResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import MobileNav from '../Pages/Components/MobileNav.vue';
 
 defineProps({
     title: String,
@@ -319,6 +320,8 @@ const logout = () => {
             <main>
                 <slot />
             </main>
+
+            <MobileNav class="pt-10 z-10" />
         </div>
     </div>
 </template>
