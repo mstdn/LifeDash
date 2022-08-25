@@ -72,7 +72,7 @@ defineProps({
                             </svg>
                         </div>
                         <h3 class="mb-2 text-xl font-bold dark:text-white">Notes</h3>
-                        <p class="text-gray-500 dark:text-gray-400">Write endless notes and keep them orgganized.</p>
+                        <p class="text-gray-500 dark:text-gray-400">Write endless notes and keep them organized.</p>
                     </div>
                     <div>
                         <div
