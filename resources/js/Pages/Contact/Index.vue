@@ -39,7 +39,7 @@ function destroy(id) {
 </script>
 
 <template>
-    <AppLayout title="Notes">
+    <AppLayout title="Contacts">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-900 dark:text-white leading-tight">
                 Contacts 

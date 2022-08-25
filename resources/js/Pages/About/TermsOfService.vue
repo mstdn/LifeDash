@@ -87,12 +87,7 @@
                                     </li>
                                 </ul>
                                 <p class="mt-2">
-                                    This Agreement shall begin on the date hereof. Our Terms and Conditions
-                                    were created with the help of the
-                                    <a href="https://www.termsandconditionsgenerator.com/">
-                                        Free Terms and Conditions Generator
-                                    </a>
-                                    .
+                                    This Agreement shall begin on the date hereof.
                                 </p>
                                 <p class="mt-2">
                                     Parts of this website offer an opportunity for users to post and
