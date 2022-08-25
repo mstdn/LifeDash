@@ -10,6 +10,7 @@ import JetLabel from '@/Components/Label.vue';
 
 const form = useForm({
     name: '',
+    username: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -26,25 +27,38 @@ const submit = () => {
 <template>
     <GuestLayout title="Register">
 
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-900 dark:text-white leading-tight">
+                Signup for free
+            </h2>
+        </template>
+
         <JetAuthenticationCard>
 
             <form @submit.prevent="submit">
                 <div>
                     <JetLabel for="name" value="Name" />
-                    <JetInput id="name" v-model="form.name" type="text" class="mt-1 block w-full" required autofocus
+                    <JetInput id="name" v-model="form.name" type="text" required autofocus
                         autocomplete="name" />
                     <JetInputError class="mt-2" :message="form.errors.name" />
                 </div>
 
                 <div class="mt-4">
+                    <JetLabel for="username" value="Username" />
+                    <JetInput id="username" v-model="form.username" type="text" required
+                        autocomplete="username" />
+                    <JetInputError class="mt-2" :message="form.errors.username" />
+                </div>
+
+                <div class="mt-4">
                     <JetLabel for="email" value="Email" />
-                    <JetInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" required />
+                    <JetInput id="email" v-model="form.email" type="email" required />
                     <JetInputError class="mt-2" :message="form.errors.email" />
                 </div>
 
                 <div class="mt-4">
                     <JetLabel for="password" value="Password" />
-                    <JetInput id="password" v-model="form.password" type="password" class="mt-1 block w-full" required
+                    <JetInput id="password" v-model="form.password" type="password" required
                         autocomplete="new-password" />
                     <JetInputError class="mt-2" :message="form.errors.password" />
                 </div>
@@ -52,7 +66,7 @@ const submit = () => {
                 <div class="mt-4">
                     <JetLabel for="password_confirmation" value="Confirm Password" />
                     <JetInput id="password_confirmation" v-model="form.password_confirmation" type="password"
-                        class="mt-1 block w-full" required autocomplete="new-password" />
+                     required autocomplete="new-password" />
                     <JetInputError class="mt-2" :message="form.errors.password_confirmation" />
                 </div>
 
@@ -62,17 +76,17 @@ const submit = () => {
                             <JetCheckbox id="terms" v-model:checked="form.terms" name="terms" />
 
                             <div class="ml-2">
-                                I agree to the <a target="_blank" :href="route('terms.show')"
-                                    class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and
-                                <a target="_blank" :href="route('policy.show')"
-                                    class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                                I agree to the <InertiaLink target="_blank" :href="route('terms')"
+                                    class="underline text-sm text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300">Terms of Service</InertiaLink> and
+                                <InertiaLink target="_blank" :href="route('privacy')"
+                                    class="underline text-sm text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300">Privacy Policy</InertiaLink>
                             </div>
                         </div>
                     </JetLabel>
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                    <Link :href="route('login')" class="underline text-sm dark:text-white text-gray-600 hover:text-gray-900 dark:hover:text-gray-300">
                     Already registered?
                     </Link>
 

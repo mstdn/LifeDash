@@ -21,7 +21,7 @@ class TaskController extends Controller
                 ->when($request->input('search'), function ($query, $search) {
                     $query->where('task', 'like', "%{$search}%");
                 })
-                ->paginate(20)
+                ->paginate(40)
                 ->withQueryString()
                 ->through(fn ($task) => [
                     'id'            =>  $task->id,

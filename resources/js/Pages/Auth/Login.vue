@@ -33,6 +33,12 @@ const submit = () => {
 <template>
     <GuestLayout title="Login">
 
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-900 dark:text-white leading-tight">
+                Welcome back!
+            </h2>
+        </template>
+
         <JetAuthenticationCard>
 
             <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
@@ -42,14 +48,14 @@ const submit = () => {
             <form @submit.prevent="submit">
                 <div>
                     <JetLabel for="email" value="Email" />
-                    <JetInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" required
+                    <JetInput id="email" v-model="form.email" type="email" required
                         autofocus />
                     <JetInputError class="mt-2" :message="form.errors.email" />
                 </div>
 
                 <div class="mt-4">
                     <JetLabel for="password" value="Password" />
-                    <JetInput id="password" v-model="form.password" type="password" class="mt-1 block w-full" required
+                    <JetInput id="password" v-model="form.password" type="password" required
                         autocomplete="current-password" />
                     <JetInputError class="mt-2" :message="form.errors.password" />
                 </div>
@@ -57,13 +63,13 @@ const submit = () => {
                 <div class="block mt-4">
                     <label class="flex items-center">
                         <JetCheckbox v-model:checked="form.remember" name="remember" />
-                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                        <span class="ml-2 text-sm text-gray-600 dark:text-white">Remember me</span>
                     </label>
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
                     <Link v-if="canResetPassword" :href="route('password.request')"
-                        class="underline text-sm text-gray-600 hover:text-gray-900">
+                        class="underline text-sm text-gray-600 hover:text-gray-900 dark:hover:text-gray-300 dark:text-white">
                     Forgot your password?
                     </Link>
 

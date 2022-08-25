@@ -11,7 +11,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import ResizeTextarea from 'resize-textarea-vue3';
 
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Pash';
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'LifeDash';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

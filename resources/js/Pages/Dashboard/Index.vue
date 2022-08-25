@@ -5,9 +5,13 @@ import { ref, watch } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { useForm } from '@inertiajs/inertia-vue3';
 import Stats from './Widgets/Stats.vue';
+import Tasks from './Widgets/Tasks.vue';
+import Notes from './Widgets/Notes.vue';
 
 let props = defineProps({
     notes: Object,
+    tasks: Object,
+    contacts: Object,
     filters: Object,
 });
 
@@ -38,45 +42,38 @@ watch(
             </h2>
         </template>
 
-
-        <div class="p-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="flex items-center justify-center">
-
-                    <Stats class="w-full" :notes="notes" />
-
-                </div>
-                <div class="flex items-center justify-center">
-
-                    <div class="stats stats-vertical w-full shadow">
-                        <div class="stat">
-                            <div class="stat-title">Downloads</div>
-                            <div class="stat-value">31K</div>
-                            <div class="stat-desc">Jan 1st - Feb 1st</div>
-                        </div>
-
-                        <div class="stat">
-                            <div class="stat-title">New Users</div>
-                            <div class="stat-value">4,200</div>
-                            <div class="stat-desc">↗︎ 400 (22%)</div>
-                        </div>
-
-                        <div class="stat">
-                            <div class="stat-title">New Registers</div>
-                            <div class="stat-value">1,200</div>
-                            <div class="stat-desc">↘︎ 90 (14%)</div>
-                        </div>
-                    </div>
+        <div class="p-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
+                <div class="flex items-center justify-between">
+                    <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span
+                            class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Your
+                            Data</span> Your Control.</h1>
 
                 </div>
-                <div class="p-4 bg-cyan-400 rounded-md flex items-center justify-center">3</div>
-                <div class="p-4 bg-cyan-400 rounded-md flex items-center justify-center">4</div>
-                <div class="p-4 bg-cyan-400 rounded-md flex items-center justify-center">5</div>
-                <div class="p-4 bg-cyan-400 rounded-md flex items-center justify-center">6</div>
-                <div class="p-4 bg-cyan-400 rounded-md flex items-center justify-center">7</div>
-                <div class="p-4 bg-cyan-400 rounded-md flex items-center justify-center">8</div>
+                <div class="flex items-center justify-between">
+                    <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Keep track of your life with software that you control.</p>
+                </div>
             </div>
         </div>
+
+        <div class="p-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="flex items-center justify-center">
+
+                    <Stats class="w-full" :notes="notes" :tasks="tasks" :contacts="contacts" />
+
+                </div>
+                <div class="flex items-center justify-center">
+
+
+                </div>
+                <div class="flex items-center justify-center">
+
+
+                </div>
+            </div>
+        </div>
+
 
 
     </AppLayout>

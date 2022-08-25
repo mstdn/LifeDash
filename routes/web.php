@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NoteController;
@@ -8,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [DashboardController::class, 'landing'])->name('landing')->middleware('guest');
+Route::get('/about', [AboutController::class, 'about'])->name('about')->middleware('guest');
+Route::get('/terms', [AboutController::class, 'terms'])->name('terms')->middleware('guest');
+Route::get('/privacy', [AboutController::class, 'privacy'])->name('privacy')->middleware('guest');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

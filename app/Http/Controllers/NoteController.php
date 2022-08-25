@@ -21,7 +21,7 @@ class NoteController extends Controller
                 ->when($request->input('search'), function ($query, $search) {
                     $query->where('description', 'like', "%{$search}%");
                 })
-                ->paginate(20)
+                ->paginate(15)
                 ->withQueryString()
                 ->through(fn ($note) => [
                     'id'            =>  $note->id,

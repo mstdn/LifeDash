@@ -23,9 +23,15 @@ const submit = () => {
 <template>
     <GuestLayout title="Forgot Password">
 
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-900 dark:text-white leading-tight">
+                Password forgot?
+            </h2>
+        </template>
+
         <JetAuthenticationCard>
 
-            <div class="mb-4 text-sm text-gray-600">
+            <div class="mb-4 text-sm text-gray-600 dark:text-white">
                 Forgot your password? No problem. Just let us know your email address and we will email you a password
                 reset link that will allow you to choose a new one.
             </div>
@@ -37,7 +43,7 @@ const submit = () => {
             <form @submit.prevent="submit">
                 <div>
                     <JetLabel for="email" value="Email" />
-                    <JetInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" required
+                    <JetInput id="email" v-model="form.email" type="email" required
                         autofocus />
                     <JetInputError class="mt-2" :message="form.errors.email" />
                 </div>

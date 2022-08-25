@@ -22,7 +22,7 @@ class ContactController extends Controller
                     $query->where('first_name', 'like', "%{$search}%")
                         ->orWhere('last_name', 'like', "%{$search}%");
                 })
-                ->paginate(20)
+                ->paginate(16)
                 ->withQueryString()
                 ->through(fn ($contact) => [
                     'id'            =>  $contact->id,

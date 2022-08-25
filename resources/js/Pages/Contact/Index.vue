@@ -6,6 +6,7 @@ import { Inertia } from "@inertiajs/inertia";
 import { useForm } from '@inertiajs/inertia-vue3';
 import CreateContact from './CreateContact.vue';
 import EditContact from './EditContact.vue';
+import Pagination from '../Components/Pagination.vue';
 
 let props = defineProps({
     contacts: Object,
@@ -41,11 +42,11 @@ function destroy(id) {
     <AppLayout title="Notes">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-900 dark:text-white leading-tight">
-                Contacts
+                Contacts 
             </h2>
         </template>
 
-        <div class="py-8">
+        <div class="pt-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
 
@@ -59,7 +60,7 @@ function destroy(id) {
                         </div>
                     </div>
 
-                    <div class="py-8">
+                    <div class="pt-8">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
                             <div v-for="contact in contacts.data" :key="contact.id"
@@ -93,7 +94,7 @@ function destroy(id) {
                                         <h5 class="my-1 text-xl font-medium text-gray-900 dark:text-white">
                                             {{ contact.first_name }} {{ contact.last_name }}
                                         </h5>
-                                        <span class="text-sm text-gray-500 dark:text-gray-400">
+                                        <span class="text-sm text-gray-500 dark:text-gray-400 p-4 text-center">
                                             {{ contact.info }}
                                         </span>
                                         <div class="flex mt-4 space-x-3 md:mt-6">
@@ -145,7 +146,7 @@ function destroy(id) {
                     </div>
 
 
-
+                <Pagination :links="contacts.links" />
                 </div>
             </div>
         </div>

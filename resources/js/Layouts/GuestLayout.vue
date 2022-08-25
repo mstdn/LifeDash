@@ -39,6 +39,9 @@ const showingNavigationDropdown = ref(false);
                                 <JetNavLink :href="route('landing')" :active="route().current('landing')">
                                     Home
                                 </JetNavLink>
+                                <JetNavLink :href="route('about')" :active="route().current('about')">
+                                    Features
+                                </JetNavLink>
                                 <JetNavLink :href="route('login')" :active="route().current('login')">
                                     Login
                                 </JetNavLink>
@@ -75,6 +78,9 @@ const showingNavigationDropdown = ref(false);
                         <JetResponsiveNavLink :href="route('landing')" :active="route().current('landing')">
                             Home
                         </JetResponsiveNavLink>
+                         <JetResponsiveNavLink :href="route('about')" :active="route().current('about')">
+                            Features
+                        </JetResponsiveNavLink>
                         <JetResponsiveNavLink :href="route('login')" :active="route().current('login')">
                             Login
                         </JetResponsiveNavLink>
@@ -87,7 +93,7 @@ const showingNavigationDropdown = ref(false);
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white dark:bg-gray-900 shadow">
+            <header v-if="$slots.header" class="bg-white dark:bg-gray-800 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>

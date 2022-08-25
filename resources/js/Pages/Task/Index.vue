@@ -8,6 +8,7 @@ import EditTask from "./EditTask.vue";
 import { useForm } from '@inertiajs/inertia-vue3';
 import MarkCompleted from './MarkCompleted.vue';
 import MarkUncompleted from './MarkUncompleted.vue';
+import Pagination from '../Components/Pagination.vue';
 
 let props = defineProps({
     tasks: Object,
@@ -62,7 +63,7 @@ const uncompletedTask = computed(() => {
                         <div class="pb-5 flex justify-between w-full">
                             <div class="flex justify-start">
                                 <input type="text" v-model="search" placeholder="Search tasks"
-                                    class="input input-bordered w-full max-w-xs bg-white text-gray-900 dark:bg-gray-800 dark:text-white" />
+                                    class="input input-bordered w-fit max-w-xs bg-white text-gray-900 dark:bg-gray-800 dark:text-white" />
                             </div>
                             <div class="flex justify-end">
                                 <AddTask />
@@ -177,6 +178,12 @@ const uncompletedTask = computed(() => {
 
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="py-8">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <Pagination :links="tasks.links" />
                 </div>
             </div>
 

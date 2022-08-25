@@ -6,6 +6,7 @@ import { ref, watch } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { useForm } from '@inertiajs/inertia-vue3';
 import EditNote from './EditNote.vue';
+import Pagination from '../Components/Pagination.vue';
 
 let props = defineProps({
     notes: Object,
@@ -108,8 +109,11 @@ function destroy(id) {
                         </div>
                     </div>
 
+                    <Pagination :links="notes.links" />
+
                 </div>
             </div>
         </div>
+
     </AppLayout>
 </template>
