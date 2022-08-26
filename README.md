@@ -1,6 +1,6 @@
 ## LifeDash 
 
-A simple single page application for managing your personal life.
+A simple single page application for managing your personal life. In early-stage development.
 
 
 Build with:
@@ -11,12 +11,6 @@ Build with:
 - [Inertia.js](https://inertiajs.com/).
 
 See the application live on [Ldash.me](https://ldash.me) 
-
-- Laravel 9
-- VueJS 3
-- TailwindCSS 2
-- InertiaJS
-- HeadlessUI
 
 ## Free, forever
 
