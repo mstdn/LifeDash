@@ -1,6 +1,11 @@
+![LifeDash Free Open Source](graphics/screenshot-1.png "LifeDash Screenshot")
+
 ## LifeDash 
 
 A simple single page application for managing your personal life. In early-stage development.
+
+
+See the application live on [Ldash.me](https://ldash.me). Want to setup one of your own? Checkout our [documentation](https://github.com/mstdn/LifeDash/blob/main/docs/install.md).
 
 
 Build with:
@@ -10,7 +15,6 @@ Build with:
 - [Tailwind CSS 2.x](https://tailwindcss.com/).
 - [Inertia.js](https://inertiajs.com/).
 
-See the application live on [Ldash.me](https://ldash.me) 
 
 ## Free, forever
 
