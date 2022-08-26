@@ -78,10 +78,9 @@ function destroy(id) {
                                                 </svg>
                                             </label>
                                             <ul tabindex="0"
-                                                class="dropdown-content menu p-2 shadow bg-base-100 dark:bg-gray-700 dark:text-white rounded-box w-52">
+                                                class="dropdown-content menu p-2 shadow bg-base-100 dark:bg-gray-900 dark:text-white rounded-box w-52">
                                                 <li>
                                                     <EditContact :contact="contact" />
-                                                    <!-- <EditNote class="m-2" :note="note" /> -->
                                                 </li>
                                                 <li>
                                                     <button @click="destroy(contact.id)" method="post" type="submit"
@@ -99,10 +98,10 @@ function destroy(id) {
                                         </span>
                                         <div class="flex mt-4 space-x-3 md:mt-6">
 
-                                            <div class="dropdown dropdown-hover">
+                                            <div class="dropdown dropdown-top lg:dropdown-hover">
                                                 <label tabindex="0" class="btn btn-sm">Contact</label>
                                                 <ul tabindex="0"
-                                                    class="dropdown-content menu p-2 shadow bg-white text-gray-900 dark:bg-gray-800 dark:text-white rounded-box w-auto">
+                                                    class="dropdown-content menu p-2 shadow bg-white text-gray-900 dark:bg-gray-900 dark:text-white rounded-box w-44">
                                                     <li>
                                                         <a>{{ contact.email }}</a>
                                                     </li>
@@ -112,10 +111,10 @@ function destroy(id) {
                                                 </ul>
                                             </div>
 
-                                            <div class="dropdown dropdown-hover">
+                                            <div class="dropdown dropdown-top lg:dropdown-hover">
                                                 <label tabindex="0" class="btn btn-sm btn-secondary">Address</label>
                                                 <div tabindex="0"
-                                                    class="dropdown-content card card-compact w-64 p-2 shadow bg-white text-gray-900 dark:bg-gray-800 dark:text-white">
+                                                    class="dropdown-content card card-compact w-44 p-2 shadow bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
                                                     <div class="card-body">
                                                         <p>
                                                             {{ contact.address }}
@@ -150,5 +149,6 @@ function destroy(id) {
                 </div>
             </div>
         </div>
+
     </AppLayout>
 </template>
