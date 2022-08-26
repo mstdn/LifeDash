@@ -29,13 +29,13 @@
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Donate</h2>
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">LifeDash</h2>
                         <ul class="text-gray-600 dark:text-gray-400">
                             <li class="mb-4">
-                                <a href="https://patreon.com/mstdn" target="_blank" class="hover:underline">Patreon</a>
+                                <a href="https://github.com/mstdn/LifeDash" target="_blank" class="hover:underline">Source</a>
                             </li>
                             <li>
-                                <a href="https://paypal.me/stuxOS" target="_blank" class="hover:underline">PayPal</a>
+                                <a href="https://paypal.me/stuxOS" target="_blank" class="hover:underline">Donate</a>
                             </li>
                         </ul>
                     </div>
