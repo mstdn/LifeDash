@@ -8,7 +8,16 @@ A simple single page application for managing your personal life. In early-stage
 See the application live on [Ldash.me](https://ldash.me). Want to setup one of your own? Checkout our [documentation](https://github.com/mstdn/LifeDash/blob/main/docs/install.md).
 
 
-Build with:
+
+<p align="center">
+<img src="/graphics/screenshot-notes.png" alt="Notes" width="60%"/>
+<img src="/graphics/screenshot-tasks.png" alt="Tasks" width="60%"/>
+<img src="/graphics/screenshot-contacts.png" alt="Contacts" width="60%"/>
+</p>
+
+
+
+### Build with:
 
 - [Laravel 9.x](https://laravel.com/).
 - [Vue JS 3.x](https://vuejs.org/).
