@@ -3,7 +3,7 @@
 LifeDash is build on Laravel and very easy to install. You do need the following:
 
 - PHP 8.1.x
-- MySQL / SQLLite
+- MySQL / SQLite
 - Nginx or Apache webserver
 - Composer
 - Node 16.x or up
@@ -44,6 +44,9 @@ Database migrations must be run:
 `php artisan migrate --force`
 
 
+Install Node dependencies:
+
+`npm install`
 
 Compile the app with Node:
 
@@ -53,7 +56,7 @@ Compile the app with Node:
 
 
 
-After that setup a webserver (apache or nginx) and browse to your new platform!
+After that setup a webserver (apache or nginx) and browse to your new platform! Or you can start a development server using `php artisan serve`.
 
 ## Admin
 
