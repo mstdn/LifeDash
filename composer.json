@@ -12,6 +12,7 @@
         "laravel/jetstream": "^2.11",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "pusher/pusher-php-server": "^7.0",
         "silviolleite/laravelpwa": "^2.0",
         "tightenco/ziggy": "^1.0"
     },

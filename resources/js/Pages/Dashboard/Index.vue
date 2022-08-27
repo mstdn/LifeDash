@@ -7,9 +7,11 @@ import { useForm } from '@inertiajs/inertia-vue3';
 import Stats from './Widgets/Stats.vue';
 import Tasks from './Widgets/Tasks.vue';
 import Notes from './Widgets/Notes.vue';
+import NotesSection from './Sections/NotesSection.vue';
 
 let props = defineProps({
     notes: Object,
+    notescount: Object,
     tasks: Object,
     contacts: Object,
     filters: Object,
@@ -46,8 +48,8 @@ watch(
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
                 <div class="flex items-center justify-between">
                     <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span
-                            class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Your
-                            Data</span> Your Control.</h1>
+                            class="text-transparent bg-clip-text bg-gradient-to-r to-red-600 from-sky-400">Your
+                            Data.</span><br /> Your Control.</h1>
 
                 </div>
                 <div class="flex items-center justify-between">
@@ -73,6 +75,8 @@ watch(
                 </div>
             </div>
         </div>
+
+        <NotesSection :notes="notes" />
 
 
 

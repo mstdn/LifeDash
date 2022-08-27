@@ -22,12 +22,16 @@ class DashboardController extends Controller
             'notes'     =>  Note::query()
                 ->where('user_id', auth()->user()->id)
                 ->latest()
-                ->paginate(20)
-                ->through(fn ($note) => [
-                    'id'    =>  $note->id,
-                    'note'  =>  $note->description,
-                    'time'  =>  $note->created_at->diffForHumans()
+                ->take(3)
+                ->get()
+                ->map(fn ($note) => [
+                    'id'            =>  $note->id,
+                    'note'          =>  $note->description,
+                    'time'          =>  $note->created_at->diffForHumans(),
+                    'category'      =>  $note->category->name,
+                    'category_id'   =>  $note->category->id
                 ]),
+                'notes.count'        =>  auth()->user()->notes->count(),
             'tasks' => Task::where(function ($query) {
                 $query->where('user_id', auth()->id());
             })
