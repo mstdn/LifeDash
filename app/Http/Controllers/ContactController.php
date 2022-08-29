@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ContactResource;
 use Inertia\Inertia;
 use App\Models\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 
@@ -14,7 +14,7 @@ class ContactController extends Controller
     public function index(Request $request)
     {
         return Inertia::render('Contact/Index', [
-            'contacts' => Contact::where(function ($query) {
+            'contacts' => ContactResource::collection(Contact::where(function ($query) {
                 $query->where('user_id', auth()->id());
             })
                 ->latest()
@@ -23,21 +23,7 @@ class ContactController extends Controller
                         ->orWhere('last_name', 'like', "%{$search}%");
                 })
                 ->paginate(16)
-                ->withQueryString()
-                ->through(fn ($contact) => [
-                    'id'            =>  $contact->id,
-                    'first_name'    =>  $contact->first_name,
-                    'last_name'     =>  $contact->last_name,
-                    'time'          =>  $contact->created_at->diffForHumans(),
-                    'email'         =>  $contact->email,
-                    'phone'         =>  $contact->phone,
-                    'address'       =>  $contact->address,
-                    'city'          =>  $contact->city,
-                    'region'        =>  $contact->region,
-                    'country'       =>  $contact->country,
-                    'postal_code'   =>  $contact->postal_code,
-                    'info'          =>  $contact->info
-                ]),
+                ->withQueryString()),
             'filters' => $request->only(['search'])
         ]);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\NoteResource;
 use App\Models\Note;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -14,29 +15,22 @@ class NoteController extends Controller
     public function index(Request $request)
     {
         return Inertia::render('Note/Index', [
-            'notes' => Note::where(function ($query) {
+            'notes' => NoteResource::collection(Note::where(function ($query) {
                 $query->where('user_id', auth()->id());
             })
+                ->with('category')
                 ->latest()
                 ->when($request->input('search'), function ($query, $search) {
                     $query->where('description', 'like', "%{$search}%");
                 })
                 ->paginate(15)
-                ->withQueryString()
-                ->through(fn ($note) => [
-                    'id'            =>  $note->id,
-                    'note'          =>  $note->description,
-                    'time'          =>  $note->created_at->diffForHumans(),
-                    'category'      =>  $note->category->name,
-                    'category_id'   =>  $note->category->id
-                ]),
-                'filters' => $request->only(['search'])
+                ->withQueryString()),
+            'filters' => $request->only(['search'])
         ]);
     }
 
     public function show(Note $note)
     {
-        
     }
 
     public function edit(Note $note)
@@ -66,7 +60,8 @@ class NoteController extends Controller
         return Redirect::route('notes');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $notes = $request->validate([
             'note'         =>  'required|min:1|max:5000',
@@ -93,5 +88,4 @@ class NoteController extends Controller
         $note->delete();
         return Redirect::route('notes');
     }
-
 }

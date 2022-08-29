@@ -6,12 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class TaskResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
     public function toArray($request)
     {
         return [
@@ -19,7 +13,8 @@ class TaskResource extends JsonResource
             'task'          =>  $this->task,
             'completed'     =>  $this->completed,
             'category'      =>  $this->category->name,
-            'category_id'   =>  $this->category->id
+            'category_id'   =>  $this->category->id,
+            'time'          =>  $this->created_at->diffForHumans(),
         ];
     }
 }

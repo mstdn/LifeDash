@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ContactResource;
+use App\Http\Resources\NoteResource;
+use App\Http\Resources\TaskResource;
 use App\Models\Note;
 use App\Models\Task;
 use App\Models\User;
@@ -19,53 +22,25 @@ class DashboardController extends Controller
     public function index(Note $note, User $user)
     {
         return Inertia::render('Dashboard/Index', [
-            'notes'     =>  Note::query()
+            'notes'     =>  NoteResource::collection(Note::query()
                 ->where('user_id', auth()->user()->id)
+                ->with('category')
                 ->latest()
-                ->take(3)
-                ->get()
-                ->map(fn ($note) => [
-                    'id'            =>  $note->id,
-                    'note'          =>  $note->description,
-                    'time'          =>  $note->created_at->diffForHumans(),
-                    'category'      =>  $note->category->name,
-                    'category_id'   =>  $note->category->id
-                ]),
-                'notes.count'        =>  auth()->user()->notes->count(),
-            'tasks' => Task::where(function ($query) {
+                ->paginate(20)),
+                'notes.count' =>  auth()->user()->notes->count(),
+            'tasks' => TaskResource::collection(Task::where(function ($query) {
+                $query->where('user_id', auth()->id());
+            })
+                ->with('category')
+                ->latest()
+                ->paginate(20)),
+                'tasks.count' =>  auth()->user()->tasks->count(),
+            'contacts' => ContactResource::collection(Contact::where(function ($query) {
                 $query->where('user_id', auth()->id());
             })
                 ->latest()
-                ->paginate(20)
-                ->withQueryString()
-                ->through(fn ($task) => [
-                    'id'            =>  $task->id,
-                    'task'          =>  $task->task,
-                    'completed'     =>  $task->completed,
-                    'time'          =>  $task->created_at->diffForHumans(),
-                    'category'      =>  $task->category->name,
-                    'category_id'   =>  $task->category->id
-                ]),
-            'contacts' => Contact::where(function ($query) {
-                $query->where('user_id', auth()->id());
-            })
-                ->latest()
-                ->paginate(20)
-                ->withQueryString()
-                ->through(fn ($contact) => [
-                    'id'            =>  $contact->id,
-                    'first_name'    =>  $contact->first_name,
-                    'last_name'     =>  $contact->last_name,
-                    'time'          =>  $contact->created_at->diffForHumans(),
-                    'email'         =>  $contact->email,
-                    'phone'         =>  $contact->phone,
-                    'address'       =>  $contact->address,
-                    'city'          =>  $contact->city,
-                    'region'        =>  $contact->region,
-                    'country'       =>  $contact->country,
-                    'postal_code'   =>  $contact->postal_code,
-                    'info'          =>  $contact->info
-                ]),
+                ->paginate(20)),
+                'contacts.count' =>  auth()->user()->tasks->count(),
         ]);
     }
 }

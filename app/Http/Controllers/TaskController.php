@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -14,23 +15,16 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         return Inertia::render('Task/Index', [
-            'tasks' => Task::where(function ($query) {
+            'tasks' => TaskResource::collection(Task::where(function ($query) {
                 $query->where('user_id', auth()->id());
             })
+                ->with('category')
                 ->latest()
                 ->when($request->input('search'), function ($query, $search) {
                     $query->where('task', 'like', "%{$search}%");
                 })
                 ->paginate(40)
-                ->withQueryString()
-                ->through(fn ($task) => [
-                    'id'            =>  $task->id,
-                    'task'          =>  $task->task,
-                    'completed'     =>  $task->completed,
-                    'time'          =>  $task->created_at->diffForHumans(),
-                    'category'      =>  $task->category->name,
-                    'category_id'   =>  $task->category->id
-                ]),
+                ->withQueryString()),
             'filters' => $request->only(['search'])
         ]);
     }
